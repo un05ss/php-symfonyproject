@@ -1,0 +1,62 @@
+/* 🌈 Style global */
+body {
+  background: linear-gradient(135deg, #f4f6f9, #e3f2fd);
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  transition: background 0.5s ease;
+}
+
+/* ✨ Navbar animée */
+.navbar {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.navbar-brand {
+  font-weight: bold;
+  animation: fadeInDown 1s ease;
+}
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* 📊 Cartes statistiques */
+.card {
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* 🔘 Boutons animés */
+.btn {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* 🎬 Animations */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

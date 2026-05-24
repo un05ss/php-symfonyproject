@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% block title %}Séances{% endblock %}
+{% block body %}
+<h2 class="mb-4 text-primary"><i class="fa-solid fa-calendar-check"></i> Gestion des Séances</h2>
+
+<div class="mb-4">
+  <a href="{{ path('prof_add_seance') }}" class="btn btn-success btn-lg">
+    <i class="fa-solid fa-plus"></i> Ajouter une séance
+  </a>
+</div>
+
+{% if seances is not empty %}
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Groupe</th>
+          <th>Jour</th>
+          <th>Heure début</th>
+          <th>Heure fin</th>
+          <th>Module</th>
+          <th>Salle</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for seance in seances %}
+          <tr>
+            <td>{{ seance.id }}</td>
+            <td>{{ seance.groupe }}</td>
+            <td>{{ seance.jour }}</td>
+            <td>{{ seance.heureDebut|date('H:i') }}</td>
+            <td>{{ seance.heureFin|date('H:i') }}</td>
+            <td>{{ seance.module }}</td>
+            <td>{{ seance.salle }}</td>
+            <td>
+              <a href="{{ path('prof_delete_seance', {id: seance.id}) }}" class="btn btn-sm btn-danger">
+                <i class="fa-solid fa-trash"></i>
+              </a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% else %}
+  <div class="alert alert-warning">Aucune séance programmée.</div>
+{% endif %}
+{% endblock %}

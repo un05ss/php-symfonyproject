@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une séance{% endblock %}
+
+{% block body %}
+<h2 class="mb-4"><i class="fa-solid fa-calendar-plus"></i> Ajouter une séance</h2>
+
+<div class="card shadow-sm">
+  <div class="card-body">
+    {{ form_start(form) }}
+
+    {% for field in [form.titre, form.groupe, form.jour, form.heureDebut, form.heureFin, form.module, form.salle] %}
+      <div class="mb-3">
+        {{ form_label(field) }}
+        {{ form_widget(field, {'attr': {'class': 'form-control'}}) }}
+        {% for error in field.vars.errors %}
+          <div class="text-danger">{{ error.message }}</div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+
+    <button type="submit" class="btn btn-success mt-3">
+      <i class="fa-solid fa-check"></i> Enregistrer
+    </button>
+
+    {{ form_end(form) }}
+  </div>
+</div>
+{% endblock %}

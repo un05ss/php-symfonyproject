@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+{% block title %}Gestion des Groupes{% endblock %}
+{% block body %}
+<h2 class="mb-4 text-secondary"><i class="fa-solid fa-users"></i> Gestion des Groupes</h2>
+
+<form method="get" class="mb-4">
+  <div class="input-group">
+    <label class="input-group-text bg-primary text-white"><i class="fa-solid fa-layer-group"></i> Groupe</label>
+    <select name="groupe" class="form-select">
+      <option value="">-- Choisir un groupe --</option>
+      {% for g in groups %}
+        <option value="{{ g }}" {% if selected == g %}selected{% endif %}>{{ g }}</option>
+      {% endfor %}
+    </select>
+    <button type="submit" class="btn btn-outline-primary">Afficher</button>
+  </div>
+</form>
+
+{% if selected %}
+  <div class="mb-4">
+    <a href="{{ path('prof_add_etudiant', {groupe: selected}) }}" class="btn btn-success btn-lg">
+      <i class="fa-solid fa-user-plus"></i> Ajouter un étudiant
+    </a>
+  </div>
+{% endif %}
+
+{% if etudiants is not empty %}
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Groupe</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for e in etudiants %}
+          <tr>
+            <td>{{ e.nom }}</td>
+            <td>{{ e.prenom }}</td>
+            <td>{{ e.groupe }}</td>
+            <td>
+              <a href="{{ path('prof_delete_etudiant', {id: e.id}) }}"
+                 class="btn btn-sm btn-danger">
+                <i class="fa-solid fa-trash"></i>
+              </a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% elseif selected %}
+  <div class="alert alert-warning">Aucun étudiant trouvé dans le groupe {{ selected }}.</div>
+{% endif %}
+{% endblock %}

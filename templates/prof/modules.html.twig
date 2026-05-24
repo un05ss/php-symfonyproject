@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block title %}Modules{% endblock %}
+{% block body %}
+<h2 class="mb-4 text-secondary"><i class="fa-solid fa-book"></i> Modules enseignés</h2>
+
+<div class="row">
+  {% for module in modules %}
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-header bg-primary text-white">{{ module.nom }}</div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            {% for cours in module.cours %}
+              <li class="list-group-item">{{ cours }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

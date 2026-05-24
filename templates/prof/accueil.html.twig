@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+<h2 class="mb-4 text-primary"><i class="fa-solid fa-house"></i> Bienvenue Professeur 👨‍🏫</h2>
+<p class="mb-4">Vous êtes connecté au système <strong>GESTIOplus</strong> pour gérer vos cours, groupes, séances et notes.</p>
+
+<div class="row g-4 mb-5">
+  <div class="col-md-4">
+    <div class="card text-center">
+      <div class="card-body">
+        <h3>{{ seanceCount }}</h3>
+        <p>Séances programmées</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card text-center">
+      <div class="card-body">
+        <h3>{{ etudiantCount }}</h3>
+        <p>Étudiants inscrits</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card text-center">
+      <div class="card-body">
+        <h3>{{ groupStats|length }}</h3>
+        <p>Groupes actifs</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3 class="mb-3 text-secondary"><i class="fa-solid fa-wrench"></i> Vos fonctionnalités</h3>
+<div class="row g-4">
+  <div class="col-md-4">
+    <a href="{{ path('prof_seances') }}" class="btn btn-lg btn-primary w-100 py-4 shadow">
+      <i class="fa-solid fa-calendar-check fa-2x me-2"></i>
+      <strong>Gestionnaire de Séances</strong>
+    </a>
+  </div>
+  <div class="col-md-4">
+    <a href="{{ path('prof_groupes') }}" class="btn btn-lg btn-success w-100 py-4 shadow">
+      <i class="fa-solid fa-users fa-2x me-2"></i>
+      <strong>Gestionnaire de Groupes</strong>
+    </a>
+  </div>
+  <div class="col-md-4">
+    <a href="{{ path('prof_notes_ajouter') }}" class="btn btn-lg btn-warning w-100 py-4 shadow">
+      <i class="fa-solid fa-clipboard-list fa-2x me-2"></i>
+      <strong>Gestionnaire de Notes</strong>
+    </a>
+  </div>
+</div>
+{% endblock %}

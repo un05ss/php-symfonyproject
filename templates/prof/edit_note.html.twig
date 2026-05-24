@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier une note{% endblock %}
+
+{% block body %}
+<h2 class="mb-4"><i class="fa-solid fa-pen"></i> Modifier une note</h2>
+
+<div class="card shadow-sm">
+  <div class="card-body">
+    {{ form_start(form) }}
+    {% for field in form %}
+      <div class="mb-3">
+        {{ form_label(field) }}
+        {{ form_widget(field, {'attr': {'class': 'form-control'}}) }}
+        {% for error in field.vars.errors %}
+          <div class="text-danger">{{ error.message }}</div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-success mt-3">
+      <i class="fa-solid fa-check"></i> Enregistrer les modifications
+    </button>
+    {{ form_end(form) }}
+  </div>
+</div>
+{% endblock %}
